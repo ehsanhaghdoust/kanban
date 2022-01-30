@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/projectsFragment">
+
+    <fragment
+        android:id="@+id/projectsFragment"
+        android:name="ehsan.haghdoust.kanban.view.fragmet.ProjectsFragment"
+        android:label="ProjectsFragment"
+        tools:layout="@layout/projects_fragment_layout">
+        <action
+            android:id="@+id/action_projectsFragment_to_sectionsFragment"
+            app:destination="@id/sectionsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sectionsFragment"
+        android:name="ehsan.haghdoust.kanban.view.fragmet.SectionsFragment"
+        android:label="SectionsFragment"
+        tools:layout="@layout/sections_fragment_layout">
+        <action
+            android:id="@+id/action_sectionsFragment_to_tasksFragment"
+            app:destination="@id/tasksFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tasksFragment"
+        android:name="ehsan.haghdoust.kanban.view.fragmet.TasksFragment"
+        android:label="TasksFragment"
+        tools:layout="@layout/tasks_fragment_layout">
+        <action
+            android:id="@+id/action_tasksFragment_to_projectsFragment"
+            app:destination="@id/projectsFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>
