@@ -1,25 +1,47 @@
 package ehsan.haghdoust.kanban.repository.database
 
 import androidx.room.Dao
+import androidx.room.Insert
 import androidx.room.Query
-import ehsan.haghdoust.kanban.model.KanbanResponse
-import ehsan.haghdoust.kanban.model.Project
-import ehsan.haghdoust.kanban.model.Section
-import ehsan.haghdoust.kanban.model.Task
+import ehsan.haghdoust.kanban.model.Paging
+import ehsan.haghdoust.kanban.repository.database.entity.*
 
 @Dao
 interface DAO {
 
-    @Query("SELECT * from KanbanResponse")
-    fun getKanbanResponse(): KanbanResponse?
+    // INSERT
+    @Insert
+    fun insertTask(taskEntity: TaskEntity)
 
-    @Query("SELECT * from Project")
-    fun getProjects(): List<Project>
+    @Insert
+    fun insertSection(sectionEntity: SectionEntity)
 
-    @Query("SELECT * from Section")
-    fun getSection(): List<Section>
+    @Insert
+    fun insertResult(resultEntity: ResultEntity)
+
+    @Insert
+    fun insertProject(projectEntity: ProjectEntity)
+
+    @Insert
+    fun insertPaging(paging: Paging)
+
+    // UPDATE
 
 
-    @Query("SELECT * from Task")
-    fun getTasks(): List<Task>
+    // DELETE
+
+    // QUERY
+
+    @Query("SELECT * from KanbanResponseEntity")
+    fun getKanbanResponse(): KanbanResponseEntity?
+
+    @Query("SELECT * from ProjectEntity")
+    fun getProjects(): List<ProjectEntity>
+
+    @Query("SELECT * from SectionEntity")
+    fun getSection(): List<SectionEntity>
+
+
+    @Query("SELECT * from TaskEntity")
+    fun getTasks(): List<TaskEntity>
 }

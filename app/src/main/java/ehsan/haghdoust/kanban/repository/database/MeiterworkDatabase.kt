@@ -4,12 +4,12 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import ehsan.haghdoust.kanban.model.Project
-import ehsan.haghdoust.kanban.model.Results
-import ehsan.haghdoust.kanban.model.Section
-import ehsan.haghdoust.kanban.model.Task
+import ehsan.haghdoust.kanban.repository.database.entity.ProjectEntity
+import ehsan.haghdoust.kanban.repository.database.entity.ResultEntity
+import ehsan.haghdoust.kanban.repository.database.entity.SectionEntity
+import ehsan.haghdoust.kanban.repository.database.entity.TaskEntity
 
-@Database(entities = [Results::class, Project::class, Section::class,Task::class], version = 1, exportSchema = false)
+@Database(entities = [ResultEntity::class, ProjectEntity::class, SectionEntity::class, TaskEntity::class], version = 1, exportSchema = false)
 abstract class MeiterworkDatabase: RoomDatabase() {
 
     abstract val dao: DAO
