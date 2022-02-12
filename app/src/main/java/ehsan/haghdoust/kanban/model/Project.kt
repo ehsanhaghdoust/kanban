@@ -1,6 +1,7 @@
 package ehsan.haghdoust.kanban.model
 
 import com.google.gson.annotations.SerializedName
+import ehsan.haghdoust.kanban.repository.database.entity.ProjectEntity
 
 
 data class Project(@SerializedName(value = "id") var id: Int? = null,
@@ -24,4 +25,29 @@ data class Project(@SerializedName(value = "id") var id: Int? = null,
                    @SerializedName(value = "roles_enabled") var rolesEnabled: Boolean? = null,
                    @SerializedName(value = "creator_id") var creatorId: String? = null,
                    @SerializedName(value = "creator_name") var creatorName: String? = null,
-                   @SerializedName(value = "trashed_at") var trashedAt: String? = null)
+                   @SerializedName(value = "trashed_at") var trashedAt: String? = null) {
+    fun toEntity(): ProjectEntity {
+        return ProjectEntity(id = this.id,
+                type = this.type,
+                name = this.name,
+                status = this.status,
+                notes = this.notes,
+                createdAt = this.createdAt,
+                updatedAt = this.updatedAt,
+                color = this.color,
+                token = this.token,
+                shareMode = this.shareMode,
+                mailToken = this.mailToken,
+                tasksActiveCount = this.tasksActiveCount,
+                tasksArchiveCount = this.tasksArchiveCount,
+                tasksTrashCount = this.tasksTrashCount,
+                tasksCompleteCount = this.tasksCompleteCount,
+                shareToken = this.shareToken,
+                shareTokenEnabled = this.shareTokenEnabled,
+                teamId = this.teamId,
+                rolesEnabled = this.rolesEnabled,
+                creatorId = this.creatorId,
+                creatorName = this.creatorName,
+                trashedAt = this.trashedAt)
+    }
+}

@@ -2,10 +2,11 @@ package ehsan.haghdoust.kanban.repository.database.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 
 @Entity
-data class ProjectEntity(@ColumnInfo(name = "id") var id: Int? = null,
+data class ProjectEntity(@PrimaryKey @ColumnInfo(name = "id") var id: Int? = null,
                          @ColumnInfo(name = "type") var type: String? = null,
                          @ColumnInfo(name = "name") var name: String? = null,
                          @ColumnInfo(name = "status") var status: Int? = null,

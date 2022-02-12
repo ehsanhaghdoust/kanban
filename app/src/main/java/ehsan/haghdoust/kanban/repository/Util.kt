@@ -11,11 +11,12 @@ import retrofit2.Response
 object Util {
 
     private val client = ApiClient().getServiceClient().create(ApiInterface::class.java)
+    private val jsonObject = JsonObject().apply {
+        addProperty("text", "*")
+    }
 
-    public suspend fun loadDataFromServer(dataFetchedInterface: DataFetchedFromServer) {
+    fun loadDataFromServer(dataFetchedInterface: DataFetchedFromServer) {
 
-        val jsonObject = JsonObject()
-        jsonObject.addProperty("text", "*")
         val cardInfoCaller = client.getCardInfo(filter = jsonObject.toString(), response_format = "object")
         cardInfoCaller.clone().enqueue(object : Callback<KanbanResponse> {
             override fun onResponse(call: Call<KanbanResponse>, responseEntity: Response<KanbanResponse>) {
@@ -24,14 +25,15 @@ object Util {
                         dataFetchedInterface.onDataFetched(responseEntity.body()!!)
                     }
                     else -> {
-                        dataFetchedInterface.onFailure(error = Error(message = "Internet Fucked-up"))
+                        dataFetchedInterface.onFailure(error = Error("Internet Fucked-up"))
                     }
                 }
             }
 
             override fun onFailure(call: Call<KanbanResponse>, t: Throwable) {
                 t.printStackTrace()
-                dataFetchedInterface.onFailure(error = Error(message = t.message, cause = t))
+//                dataFetchedInterface.onFailure(error = Error(message = t.message, cause = t))
+                dataFetchedInterface.onFailure(error = Error(t.message))
             }
         })
     }

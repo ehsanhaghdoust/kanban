@@ -3,7 +3,6 @@ package ehsan.haghdoust.kanban.repository.webservice
 import com.google.gson.JsonObject
 import ehsan.haghdoust.kanban.model.GetInitialDataRequest
 import ehsan.haghdoust.kanban.model.KanbanResponse
-import ehsan.haghdoust.kanban.repository.database.entity.KanbanResponseEntity
 import retrofit2.Call
 import retrofit2.http.*
 

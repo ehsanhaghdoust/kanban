@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -51,11 +52,11 @@ dependencies {
 
     /*Room Database*/
     implementation("androidx.room:room-runtime:2.4.1")
-//    kapt "androidx.room:room-compiler:2.4.1"
     // For Kotlin use kapt instead of annotationProcessor
 
     // optional - Kotlin Extensions and Coroutines support for Room
     implementation("androidx.room:room-ktx:2.4.1")
+    kapt ("androidx.room:room-compiler:2.4.1")
 
     // Test helpers
     testImplementation("androidx.room:room-testing:2.4.1")
@@ -64,6 +65,6 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.google.code.gson:gson:2.8.9")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("com.squareup.okhttp3:okhttp:4.2.2")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.2.2")
+    implementation('com.squareup.okhttp3:okhttp:5.0.0-alpha.4')
+    implementation('com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.4')
 }

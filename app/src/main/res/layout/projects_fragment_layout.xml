@@ -7,11 +7,14 @@
     android:background="#CAC6C6">
 
     <View
-        android:id="@+id/view"
+        android:id="@+id/headerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginBottom="-8dp"
         android:background="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName3"
+        android:contentDescription="@string/header_background"
+        android:elevation="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -19,40 +22,96 @@
     <ImageButton
         android:id="@+id/cancelImageButton"
         android:layout_width="0dp"
-        android:layout_height="64dp"
+        android:layout_height="@dimen/icon_image_view_dimen"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="@string/cancel"
+        android:elevation="8dp"
         android:scaleType="fitCenter"
         app:layout_constraintDimensionRatio="w,1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@drawable/cross_icon_gray" />
 
     <ImageButton
         android:id="@+id/backImageButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="@string/back_and_cancel"
+        android:elevation="8dp"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="@+id/cancelImageButton"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintTop_toTopOf="@+id/cancelImageButton"
+        tools:srcCompat="@drawable/left_arrow_gray" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/editTextTextPersonName"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="-8dp"
         android:backgroundTint="#00FFFFFF"
-        android:ems="10"
-        android:hint="Search"
+        android:elevation="8dp"
+        android:fontFamily="sans-serif-light"
+        android:contentDescription="@string/search"
+        android:hint="@string/search"
         android:inputType="textPersonName"
+        android:textColorHint="@android:color/darker_gray"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/cancelImageButton"
         app:layout_constraintEnd_toStartOf="@+id/cancelImageButton"
         app:layout_constraintStart_toEndOf="@+id/backImageButton"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_marginTop="4dp"
+        android:layout_height="@dimen/icon_image_view_dimen"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerView">
+
+        <Button
+            android:id="@+id/all"
+            android:layout_width="0dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:textAllCaps="false"
+
+            android:background="@drawable/filter_background_gray"
+            android:text="@string/all" />
+
+        <Button
+            android:id="@+id/active"
+            android:layout_width="0dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:background="@drawable/filter_background_gray"
+            android:textAllCaps="false"
+            android:text="@string/active" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="0dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/filter_background_gray"
+            android:layout_weight="4"
+            android:textAllCaps="false"
+            android:text="@string/archived" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

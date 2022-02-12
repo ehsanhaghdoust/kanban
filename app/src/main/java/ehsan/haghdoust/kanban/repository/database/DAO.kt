@@ -1,47 +1,55 @@
 package ehsan.haghdoust.kanban.repository.database
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import ehsan.haghdoust.kanban.model.Paging
-import ehsan.haghdoust.kanban.repository.database.entity.*
+import ehsan.haghdoust.kanban.repository.database.entity.ProjectEntity
+import ehsan.haghdoust.kanban.repository.database.entity.SectionEntity
+import ehsan.haghdoust.kanban.repository.database.entity.TaskEntity
 
 @Dao
-interface DAO {
+public interface DAO {
 
     // INSERT
     @Insert
-    fun insertTask(taskEntity: TaskEntity)
+    suspend fun insertTask(taskEntity: TaskEntity)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertTasks(taskEntities: List<TaskEntity>)
+
 
     @Insert
-    fun insertSection(sectionEntity: SectionEntity)
+    suspend fun insertSection(sectionEntity: SectionEntity)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertSections(sectionEntities: List<SectionEntity>)
+
 
     @Insert
-    fun insertResult(resultEntity: ResultEntity)
+    suspend fun insertProject(projectEntity: ProjectEntity)
 
-    @Insert
-    fun insertProject(projectEntity: ProjectEntity)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertProjects(projectEntities: List<ProjectEntity>)
 
-    @Insert
-    fun insertPaging(paging: Paging)
 
     // UPDATE
 
 
     // DELETE
 
-    // QUERY
 
-    @Query("SELECT * from KanbanResponseEntity")
-    fun getKanbanResponse(): KanbanResponseEntity?
+    // QUERY
+//    @Query("SELECT * from KanbanResponseEntity")
+//    fun getKanbanResponse(): KanbanResponseEntity?
 
     @Query("SELECT * from ProjectEntity")
-    fun getProjects(): List<ProjectEntity>
+    fun getProjects(): LiveData<List<ProjectEntity>>
 
     @Query("SELECT * from SectionEntity")
-    fun getSection(): List<SectionEntity>
-
+    fun getSection(): LiveData<List<SectionEntity>>
 
     @Query("SELECT * from TaskEntity")
-    fun getTasks(): List<TaskEntity>
+    fun getTasks(): LiveData<List<TaskEntity>>
 }
