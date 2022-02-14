@@ -17,21 +17,21 @@ public interface DAO {
     suspend fun insertTask(taskEntity: TaskEntity)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertTasks(taskEntities: List<TaskEntity>)
+    suspend fun insertTasks(taskEntities: Array<TaskEntity>)
 
 
     @Insert
     suspend fun insertSection(sectionEntity: SectionEntity)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertSections(sectionEntities: List<SectionEntity>)
+    suspend fun insertSections(sectionEntities: Array<SectionEntity>)
 
 
     @Insert
     suspend fun insertProject(projectEntity: ProjectEntity)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertProjects(projectEntities: List<ProjectEntity>)
+    suspend fun insertProjects(projectEntities: Array<ProjectEntity>)
 
 
     // UPDATE
@@ -45,11 +45,11 @@ public interface DAO {
 //    fun getKanbanResponse(): KanbanResponseEntity?
 
     @Query("SELECT * from ProjectEntity")
-    fun getProjects(): LiveData<List<ProjectEntity>>
+    fun getProjects(): LiveData<Array<ProjectEntity>>
 
     @Query("SELECT * from SectionEntity")
-    fun getSection(): LiveData<List<SectionEntity>>
+    fun getSection(): LiveData<Array<SectionEntity>>
 
     @Query("SELECT * from TaskEntity")
-    fun getTasks(): LiveData<List<TaskEntity>>
+    fun getTasks(): LiveData<Array<TaskEntity>>
 }

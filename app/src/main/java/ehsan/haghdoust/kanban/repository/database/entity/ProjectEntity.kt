@@ -3,6 +3,7 @@ package ehsan.haghdoust.kanban.repository.database.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import ehsan.haghdoust.kanban.model.Project
 
 
 @Entity
@@ -27,4 +28,28 @@ data class ProjectEntity(@PrimaryKey @ColumnInfo(name = "id") var id: Int? = nul
                          @ColumnInfo(name = "roles_enabled") var rolesEnabled: Boolean? = null,
                          @ColumnInfo(name = "creator_id") var creatorId: String? = null,
                          @ColumnInfo(name = "creator_name") var creatorName: String? = null,
-                         @ColumnInfo(name = "trashed_at") var trashedAt: String? = null)
+                         @ColumnInfo(name = "trashed_at") var trashedAt: String? = null) {
+    public fun toProjectModel(): Project {
+        return Project(id = id,
+                type = type,
+                name = name,
+                status = status,
+                notes = notes,
+                createdAt = createdAt,
+                updatedAt = updatedAt,
+                color = color,
+                token =token,
+                shareMode = shareMode,
+                mailToken = mailToken,
+                tasksActiveCount = tasksActiveCount,
+                tasksArchiveCount = tasksArchiveCount,
+                tasksTrashCount = tasksTrashCount,
+                tasksCompleteCount = tasksCompleteCount,
+                shareToken = shareToken,
+                shareTokenEnabled = shareTokenEnabled,
+                teamId = teamId,
+                rolesEnabled = rolesEnabled,
+                creatorId = creatorId,
+                creatorName = creatorName)
+    }
+}

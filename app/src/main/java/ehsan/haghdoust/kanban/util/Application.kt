@@ -23,17 +23,17 @@ class Application : Application() {
 
 //        database = MeisterworkDatabase.getInstance(context = applicationContext)
 
-        Util.loadDataFromServer(object : DataFetchedFromServer {
-            override fun onDataFetched(data: KanbanResponse) {
-                coroutineScope.launch {
-                    val projectEntities = data.result.projects.map { it.toEntity() }
-                    database.dao.insertProjects(projectEntities = projectEntities)
-                }
-            }
-
-            override fun onFailure(error: Error) {
-                print(error.message)
-            }
-        })
+//        Util.loadDataFromServer(object : DataFetchedFromServer {
+//            override fun onDataFetched(data: KanbanResponse) {
+//                coroutineScope.launch {
+//                    val projectEntities = data.result.projects.map { it.toEntity() }
+//                    database.dao.insertProjects(projectEntities = projectEntities.toTypedArray())
+//                }
+//            }
+//
+//            override fun onFailure(error: Error) {
+//                print(error.message)
+//            }
+//        })
     }
 }

@@ -4,4 +4,5 @@
     <dimen name="icon_image_view_dimen">36dp</dimen>
 
     <dimen name="filter_buttons_radius">48dp</dimen>
+    <dimen name="adapter_view_radius">16dp</dimen>
 </resources>
